@@ -21,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
             }
 
             R.id.tv_welcome_signUp -> {
-
+                startActivity(Intent(this, SignUpActivity::class.java))
             }
 
             R.id.ll_welcome_alreadySignIn -> {
@@ -29,6 +29,7 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun initListener() {
         val clSignInWithGoogle: ConstraintLayout = findViewById(R.id.cl_welcome_signInWithGoogle)
         val tvSignUp: TextView = findViewById(R.id.tv_welcome_signUp)
