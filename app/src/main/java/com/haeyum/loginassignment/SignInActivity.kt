@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.haeyum.loginassignment.MainApp.Companion.appPref
 import com.haeyum.loginassignment.statusBarManager.StatusBarManager
 
 class SignInActivity : AppCompatActivity() {
@@ -28,7 +29,15 @@ class SignInActivity : AppCompatActivity() {
     fun onClick(v: View) {
         when(v.id) {
             R.id.btn_signIn -> {
-                Toast.makeText(this, "username: ${edtUsername.text} | password: ${edtPassword.text}", Toast.LENGTH_SHORT).show()
+                if(appPref.username == null || appPref.password == null)
+                    ToastHelper.showToast("회원가입을 먼저 해주세요")
+                else if(appPref.username == edtUsername.text.toString())
+                    if(appPref.password == edtPassword.text.toString())
+                        ToastHelper.showToast("로그인 성공!")
+                    else
+                        ToastHelper.showToast("잘못된 비밀번호 입니다")
+                else
+                    ToastHelper.showToast("존재하지 않는 사용자이름 입니다.")
             }
 
             R.id.ll_signIn_signUp -> {

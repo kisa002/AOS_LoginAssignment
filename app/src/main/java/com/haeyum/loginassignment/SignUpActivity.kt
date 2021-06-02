@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
+import com.haeyum.loginassignment.MainApp.Companion.appPref
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var edtUsername: EditText
@@ -77,6 +78,9 @@ class SignUpActivity : AppCompatActivity() {
     fun onClick(v: View) {
         when(v.id) {
             R.id.btn_signUp -> {
+                appPref.username = edtUsername.text.toString()
+                appPref.password = edtPassword.text.toString()
+                finish()
                 Toast.makeText(this, "회원가입 완료", Toast.LENGTH_SHORT).show()
             }
 
